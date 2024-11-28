@@ -4,7 +4,7 @@ const saleSchema = new mongoose.Schema({
     SaleID: Number,
     ProductID: { type: mongoose.Schema.Types.ObjectId, ref: "Products" },
     Quantity: Number,
-    Date: Date(),
+    Date: String,
     TotalAmount:Number
 });
 
