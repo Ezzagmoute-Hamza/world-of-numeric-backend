@@ -9,3 +9,7 @@ export const paths = {
         ROOT:"/products"
     }
 }
+
+export const apiErrorMessage = "Something went wrong";
+export const periods = ['7d', '30d', '12m'];
+export type PeriodType = '7d' | '30d' | '12m';
