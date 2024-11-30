@@ -7,6 +7,9 @@ export const paths = {
     },
     PRODUCT:{
         ROOT:"/products"
+    },
+    DOCS:{
+        ROOT:"/api_documentation"
     }
 }
 

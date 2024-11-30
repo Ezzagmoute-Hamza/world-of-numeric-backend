@@ -29,7 +29,8 @@ productApp.get('/',async(req:Request,res:Response)=>{
       {
         $project: {
           _id: 0,
-          ProductName: "$productDetails.ProductName",
+          productName: "$productDetails.ProductName",
+          price:"$productDetails.Price",
           totalSales: 1,
         }
       }
