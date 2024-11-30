@@ -41,6 +41,25 @@ export default {
                     }
                 }
             }
+        },
+        "/analytics/total_sales": {
+            "get": {
+                "description": "Retourne le montant total des ventes pour la période sélectionnée.",
+                "parameters":{
+                    "in": "query",
+                    "name": "period",
+                    "required": false,
+                    "schema":{
+                        "type": "string",
+                       "enum": ["7d", "30d", "12m"]
+                    }  
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
    }
 }
