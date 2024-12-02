@@ -10,12 +10,21 @@ import { paths } from "./constants";
 import analyticApp from "./routes/analytics";
 import productApp from "./routes/products";
 import dotenv from "dotenv";
-
+import cors from 'cors';
 const app: Express = createRoute();
 const port =checkNullable(process.env.PORT,8080);
 
 dotenv.config();
 connectToDatabase();
+
+const origins = [
+    "http://localhost:5173",
+    "https://store-analytics-tool.vercel.app/"
+];
+
+app.use(cors({
+    origin: origins
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.text());
