@@ -29,7 +29,11 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 
-
+app.get('/',(req,res)=>{
+    res.status(200).send({
+        message:"Working..."
+    })
+}),
 app.use(paths.ANALYTIC.ROOT,analyticApp);
 app.use(paths.PRODUCT.ROOT,productApp);
 
