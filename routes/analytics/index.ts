@@ -64,7 +64,6 @@ analyticApp.get(paths.ANALYTIC.TOTAL_SALES,async (req:Request,res:Response)=>{
 analyticApp.get(paths.ANALYTIC.CATEGORY_SALES,async(req:Request,res:Response)=>{
    try{
       const categorySales = await Sales.aggregate([
-        
         {
           $lookup: {
             from: "products",
@@ -73,11 +72,7 @@ analyticApp.get(paths.ANALYTIC.CATEGORY_SALES,async(req:Request,res:Response)=>{
             as: "productDetails"
           }
         },
-      
-        {
-          $unwind: "$productDetails"
-        },
-      
+
         {
           $group: {
             _id: "$productDetails.Category", 
@@ -96,19 +91,15 @@ analyticApp.get(paths.ANALYTIC.CATEGORY_SALES,async(req:Request,res:Response)=>{
         {
           $unwind: "$categories"
         },
-      
         {
           $project: {
             _id: 0,
-            category: "$categories.category",
+            category: { $arrayElemAt: ["$categories.category", 0]},
             salesCount: "$categories.salesCount",
             percentage: {
               $multiply: [{ $divide: ["$categories.salesCount", "$totalSales"] }, 100]
             }
           }
-        },
-        {
-          $sort: { salesCount: -1 }
         }
       ]);
       
