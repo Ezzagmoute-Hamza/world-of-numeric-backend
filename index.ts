@@ -19,7 +19,7 @@ connectToDatabase();
 
 const origins = [
     "http://localhost:5173",
-    "https://store-analytics-tool.vercel.app/"
+    "https://store-analytics-tool.vercel.app",
 ];
 
 app.use(cors({
