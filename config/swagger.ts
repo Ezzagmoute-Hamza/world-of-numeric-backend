@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 
 export default {
     "swagger": "2.0",
